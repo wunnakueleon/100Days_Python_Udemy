@@ -1,1 +1,0 @@
-# This is the Snake Game Idea that I want to do that I want to have snake game to have the roles reversed as my final project
