@@ -28,19 +28,35 @@
 
 import pandas
 
-data = pandas.read_csv("day26_NATO_Alphabets/NATO-alphabet-start/nato_phonetic_alphabet.csv")
+data = pandas.read_csv("NATO-alphabet-start/nato_phonetic_alphabet.csv")
 
 data_dict = data.to_dict()
 alpha_dict = {data_dict['letter'][index]:data_dict['code'][index] for index in range(0, 26)}
 
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-user_input = input(str("What is the code?")).upper()
-user_code = list(user_input)
-print(user_code)
-for x in user_code:
-    if x != " ":
-        print(f"{alpha_dict[x]} ", end="")
+def code_alphab():
+    user_input = "".join(input(str("What is the code?")).split()).upper()
+    user_code = list(user_input)
+
+    try:
+        output = [alpha_dict[x] for x in user_code]
+
+
+        for x in user_code:
+            if x != " ":
+                print(f"{alpha_dict[x]} ", end="")
+
+    except KeyError:
+        print("Sorry, only letters in the alphabet please")
+        code_alphab()
+
+    else:
+        print("\n")
+        print(output)
+
+code_alphab()
+
 
 
 
